@@ -18,7 +18,8 @@ flowchart TD
     A[Crawl Website] --> B[Save PDFs]
     B --> C[Extract Text]
     C --> D[Optimize Large PDFs]
-    D --> E[Generate Embeddings]
+    D --> C
+    C --> E[Generate Embeddings]
     E --> F[Store in Supabase]
 ```
 

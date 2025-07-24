@@ -14,13 +14,33 @@ This project crawls a website, saves each page as a PDF, extracts text from the 
 ## Workflow
 
 ```mermaid
-flowchart TD
-    A[Crawl Website] --> B[Save PDFs]
-    B --> C[Extract Text]
-    C --> D[Optimize Large PDFs]
-    D --> C
-    C --> E[Generate Embeddings]
-    E --> F[Store in Supabase]
+flowchart TB
+    A["Crawl Website"] --> B["Save PDFs"]
+    B --> C["Extract Text"]
+    C L_C_D_0@-.-> D(["Optimize Large PDFs"])
+    C --> n2["Untitled Node"]
+    C L_C_n1_0@<-.-> n1["Call text Extraction API"]
+    D L_D_C_0@-.-> C
+    n2 --> n3["Generate Embeddings"]
+    n3 --> n4["Store in Supabase"]
+
+    A@{ shape: procs}
+    B@{ shape: disk}
+    C@{ shape: manual-file}
+    n2@{ shape: anchor}
+    n1@{ shape: doc}
+    n3@{ shape: paper-tape}
+    n4@{ shape: internal-storage}
+     A:::Sky
+     n4:::Ash
+    classDef Sky stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
+    classDef Ash stroke-width:1px, stroke-dasharray:none, stroke:#999999, fill:#EEEEEE, color:#000000
+
+    L_C_D_0@{ animation: slow } 
+    L_C_n1_0@{ animation: none } 
+    L_D_C_0@{ animation: slow } 
+
+
 ```
 
 ## Setup

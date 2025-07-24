@@ -1,0 +1,7 @@
+crawl4ai
+beautifulsoup4
+supabase
+openai
+requests
+pypdf
+# python-dotenv is not used in the codebase, so it is removed 

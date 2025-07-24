@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  python-app:
+    build: .
+    container_name: dbt-chatbot-python
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/.pytest_cache
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - FLASK_ENV=development
+    working_dir: /app
+    command: python main.py
+    stdin_open: true
+    tty: true
+    
+  # Optional: Add a database service if needed
+  # postgres:
+  #   image: postgres:15
+  #   container_name: dbt-chatbot-db
+  #   environment:
+  #     POSTGRES_DB: dbt_chatbot
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+# volumes:
+#   postgres_data: 

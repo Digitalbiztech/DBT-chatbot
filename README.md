@@ -1,4 +1,4 @@
-# DBT Chatbot Crawler Pipeline
+# DBT Chatbot Crawler Pipeline 
 
 This project crawls a website, saves each page as a PDF, extracts text from the PDFs, generates OpenAI embeddings, and stores the results in Supabase for search and analysis.
 
